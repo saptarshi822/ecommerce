@@ -3,6 +3,7 @@ import './Navbar.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Search from './Search';
+import Cart from './Cart';
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
 
@@ -35,7 +36,10 @@ const Navbar = () => {
               <Link to='/about'>About</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/cart">Cart</Link>
+            </li>
+            <li>
+              <Cart />
             </li>
           </ul>
         </div>

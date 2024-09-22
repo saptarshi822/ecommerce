@@ -1,41 +1,15 @@
-import { React,useState,useEffect} from 'react'
-import fetchProducts from '../services/fetchProducts';
-import { useSelector, useDispatch } from 'react-redux';
-import { increment,addtoCart } from '../services/searchSlice';
-
- function List(props) {
-    //create a new array by filtering the original array
-    const [data, setData] = useState([])
-    const searchQuery = useSelector((state) => state.search.searchQuery);
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { increment,addtoCart } from "../services/searchSlice";
+export default function CartFilter(props){
     const dispatch = useDispatch()
-    useEffect(() => {
-        async function fetchData() {
-          const response = await fetchProducts();
-          setData(response)
-        }
-        fetchData();
-      }, []);
-    
-    const filteredData = data.filter((el) => {
-        //if no input the return the original
-        if (props.input === '') {
-            return el;
-        }
-        //return the item which contains the user input
-        else {
-            return el.title.toLowerCase().includes(searchQuery)
-        }
-    })
-    function inputHandler(item){
-        dispatch(increment())
-        dispatch(addtoCart(item))
-    }
-    
+    const filteredData = props["props"]
+    console.log("this:",filteredData)
     return (
+        <>
         <ul>
             {filteredData.map((item) => (
-                
-                <div className="card"  >
+                <div className="card" >
                 <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
                   <a
                     className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
@@ -118,7 +92,7 @@ import { increment,addtoCart } from '../services/searchSlice';
                     <a
                       href="#"
                       className="flex items-center justify-center rounded-md bg-slate-900 px-5 py-2.5 text-center text-sm font-medium text-white hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-blue-300"
-                    onClick={() => {inputHandler(item)}}>
+                    onClick={() => {dispatch(increment());dispatch(addtoCart(item))}}>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="mr-2 h-6 w-6"
@@ -140,7 +114,6 @@ import { increment,addtoCart } from '../services/searchSlice';
               </div>
             ))}
         </ul>
+        </>
     )
 }
-
-export default List

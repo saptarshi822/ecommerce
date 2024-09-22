@@ -36,24 +36,21 @@
 //   );
 // }
 
-import { React, useState } from "react";
+import { React,} from "react";
 import {TextField,InputAdornment} from "@material-ui/core";
-import List from "./List";
 import "../App.css"
 import './search.css'
 import { createContext } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchQuery } from "../services/searchSlice";
+import SearchIcon from '@mui/icons-material/Search';
 export const SearchContext = createContext();
 export default function Search(){
-  const [inputText, setInputText] = useState("");
+ 
   const dispatch = useDispatch();
   let inputHandler = (e) => {
     //convert input text to lower case
-
     var lowerCase = e.target.value.toLowerCase();
-    
-    setInputText(lowerCase);
     dispatch(setSearchQuery(lowerCase));
   };
 
@@ -71,7 +68,7 @@ export default function Search(){
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-               
+                <SearchIcon />
               </InputAdornment>
             ),
           }}

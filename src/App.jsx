@@ -2,6 +2,7 @@
 import "./App.css";
 import HomePage from "./views/Homepage.jsx";
 import About from "./views/About.jsx";
+import CartPage from "./views/CartPage.jsx";
 import {
   Route,
   Routes,
@@ -17,6 +18,7 @@ function App() {
         <Route path="/products" element={<ProductListPage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/about" element={<About /> } />
+        <Route path = "/cart" element={<CartPage />} />
       </Routes>
     </div>
   );
