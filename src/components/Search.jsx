@@ -46,7 +46,7 @@ import { setSearchQuery } from "../services/searchSlice";
 import SearchIcon from '@mui/icons-material/Search';
 export const SearchContext = createContext();
 export default function Search(){
- 
+  const [inputText, setInputText] = useState("");
   const dispatch = useDispatch();
   let inputHandler = (e) => {
     //convert input text to lower case
@@ -55,8 +55,7 @@ export default function Search(){
   };
 
   return (
-    <div className="main">
-    
+    <div className="main ">
       <div className="search">
       <TextField
           id="outlined-basic"
