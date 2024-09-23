@@ -9,7 +9,6 @@ import {
 import ProductListPage from "./views/ProductListPage.jsx";
 
 function App() {
-
   return (
     <div className="App">
       <Routes>

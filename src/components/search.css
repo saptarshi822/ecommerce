@@ -1,9 +1,9 @@
 .main {
     padding: 20px;
-    min-width: 800px;
+    min-width: 600px;
   }
   .search{
-    min-width: 600px;
+    min-width: 500px;
   }
   .searchField {
     margin-top: 20px;
